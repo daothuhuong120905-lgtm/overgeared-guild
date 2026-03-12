@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Overgeared Guild</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+    <img src="/static/logo.png" class="logo">
+
+    <h1>Overgeared Guild</h1>
+
+    <img src="/static/guild.jpg" class="guildimg">
+
+    <h2>Join Raid</h2>
+
+    <form method="POST">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <select name="party">
+            <option value="1">Party 1</option>
+            <option value="2">Party 2</option>
+            <option value="3">Party 3</option>
+            <option value="4">Party 4</option>
+        </select>
+
+        <select name="class">
+
+            <option value="bowarrow">Bow Arrow</option>
+            <option value="bowgunarrow">Bowgun Arrow</option>
+            <option value="bowgundagger">Bowgun Dagger</option>
+            <option value="bowgunknuck">Bowgun Knuckle</option>
+            <option value="bowgunmd">Bowgun MD</option>
+            <option value="bowgunshield">Bowgun Shield</option>
+
+            <option value="dualsword">Dual Sword</option>
+
+            <option value="halberdarrow">Halberd Arrow</option>
+            <option value="halberddagger">Halberd Dagger</option>
+
+            <option value="knuckarrow">Knuckle Arrow</option>
+            <option value="knuckdagger">Knuckle Dagger</option>
+            <option value="knuckmd">Knuckle MD</option>
+            <option value="knuckshield">Knuckle Shield</option>
+
+            <option value="staffarrow">Staff Arrow</option>
+            <option value="staffknuck">Staff Knuckle</option>
+            <option value="staffmd">Staff MD</option>
+
+            <option value="ohsarrow">OHS Arrow</option>
+            <option value="ohsdagger">OHS Dagger</option>
+            <option value="ohsmd">OHS MD</option>
+
+            <option value="TwoHandSword">Two Hand Sword</option>
+
+        </select>
+
+        <button type="submit">Join</button>
+
+    </form>
+
+    <div class="raid">
+
+        {% for p in parties %}
+
+        <div class="party">
+
+            <h3>Party {{p}}</h3>
+
+            {% for player in parties[p] %}
+
+            <div class="player">
+
+                <img src="/static/{{player.class}}.png">
+
+                {{player.name}}
+
+                <a href="/delete/{{p}}/{{player.name}}">❌</a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
